@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felicitas - Indumentaria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="../img/icono.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <header> 
+        <section class="banner">
+            <div class="publicidad">ENVIOS A TODO EL PAIS - 6 CUOTAS SIN INTERÉS - 15% OFF CON TRANSFERENCIA</div>
+            <nav class="navbar navbar-expand-lg menu">
+                <div class="container">
+                  <a class="navbar-brand" href="../index.html">
+                    <img src="../img/logo.png" alt="Felicitas" class="logo">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="productos.html">Productos</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="accesorios.html">Accesorios</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="como-comprar.html">Como comprar</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                      </li>
+                    </ul>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <svg id="carrito" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-heart " viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+                        </svg>
+                      </button>
+                      </div>  
+                  </div>
+                </div>
+              </nav> 
+            </section>
+    </header>   
+            <div id="contenedor_indumentaria" class="compras">
+                
+            </div>
+        <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Carrito de Compras</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="contenedor_carrito">
+              <!--CARD HORIZONTAL PARA VISUALIZARSE EN CARRITO-->
+              <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="../img/" class="img-fluid rounded-start" alt="...">
+                      </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Nombre Producto</h5>
+                          <p class="card-text">Cantidad: </p>
+                          <p class="card-text">Precio: </p>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir comprando</button>
+              <button type="button" class="btn btn-primary">Finalizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../main.js"></script>
+</body>
+</html>

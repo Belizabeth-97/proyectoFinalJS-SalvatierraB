@@ -1,0 +1,75 @@
+
+#grilla-contacto{
+    display: grid;
+    grid-template-areas:
+    "datos"
+    "mapa";
+    grid-template-rows: 70% 50%; 
+}
+
+.Novedades {
+    color: $color-letra-principal;
+    font-family: $fuente-principal;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.Novedades form {
+    text-align: center;
+}
+
+.Novedades h1{
+    display: flex;
+    justify-content: center;
+}
+
+.contacto{
+    margin-left: 15%;
+    color: $color-letra-principal;
+    font-family: $fuente-principal;
+    margin-top: 8%;
+}
+
+.suscripcion{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    padding-left:34%;
+    border-radius:10px;
+    margin-top: 3%;
+}
+
+iframe{
+    width: 80%;
+    height: 75%;
+    margin: 12%;
+}
+
+form.datos{
+    border-radius:10px;
+    margin: 16%;
+    font-family: $fuente-principal;
+}
+
+form label{
+    width:25%;
+    font-weight:bold;
+    display:inline-block;
+    margin: 3%;
+}
+
+input[type=text], input[type=tel], input[type=email]{
+   font-size: 25px;
+   font-family: "Montserrat";
+   border-radius: 5%;
+}
+
+input[type="submit" i]{
+    border: 25px;
+    margin-top: 10%;
+    padding: 10px 25px;
+    color: white;
+    background-color: $color-letra-principal;
+    font-family: $fuente-principal;
+    border-radius: 5%;
+}

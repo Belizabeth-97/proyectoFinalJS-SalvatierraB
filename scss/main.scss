@@ -1,0 +1,347 @@
+@import "variable";
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: $color-base;
+    overflow-x: hidden;
+}
+
+header{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* PUBLICIDAD DE CUOTAS SIN INTERÉS*/
+.banner{
+    color: $color-letra-principal;
+    text-align: center;
+}
+
+.publicidad{
+    background-color: #cfced099;
+    color: $color-letra-principal;
+    font-family: $fuente-principal;
+    text-align: center;
+}
+
+h2{
+    color: $color-letra-principal;
+    font-family: $fuente-principal;
+    text-align: center;
+}
+
+.logo{
+    display: flex;
+    height: 50%;
+    row-gap: 50%;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-between;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    list-style: none;
+}
+
+.menu a {
+    color: $color-letra-principal;
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius: 7%;
+    font-family: $fuente-principal;
+    opacity: 0.6;
+    transition: all .5s;
+}
+
+.menu li a:hover{
+    opacity: 1.0;
+    background-color: #756b64d0;
+    border:  #756b64d0;
+    color: white;
+}
+
+.bolsa{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8%;
+}
+
+.carrito {
+    left: 95%;
+    width: 12%;
+}
+
+.imagenPrincipal {
+    @include ajuste(100%, 35%);
+    top: 10px;
+}
+
+/* GRILLA GRID DE ACCESO A PAGINAS*/
+#grilla{
+    display: grid;
+    grid-template-areas:
+    "accesoCuotas" 
+    "accesoAccesorios"
+    "accesoProducto";
+    grid-template-rows: 30% 30% 30%; 
+    justify-content: center;
+}
+
+#grilla a img:hover {
+    opacity: 0.75;
+}
+
+.accesoCuotas{
+    grid-area: accesoCuotas;
+}
+
+.accesoAccesorios{
+    grid-area: accesoAccesorios;
+}
+
+.accesoProducto{
+    grid-area: accesoProducto;
+}
+
+.grande {
+    width: 70%;
+    height: 90%;
+    margin: 15%;
+    border-radius: 3%;
+    opacity: 1;
+    object-fit: cover;
+}
+
+.chico {
+    width: 70%;
+    height: 94%;
+    margin: 15%;
+    border-radius: 3%;
+    opacity: 1;
+    object-fit: cover;
+}
+
+/* INFO DE ENVIOS-MEDIOS DE PAGO- DEVOLUCIONES */
+.adicionales {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-family: $fuente-principal;
+    color: $color-letra-principal;
+    gap: 35px;
+}
+
+/* ACCESO A REDES SOCIALES */
+.redes {
+    text-align: center;
+    align-items: center;
+    font-family: $fuente-principal;
+    padding-top: 7.5%;
+    padding-bottom: 2.5%;
+}
+
+.redes a{
+    text-decoration: none;
+}
+
+.redes a img .rd{
+    width: 50px;
+    padding-top: 2%;
+    margin: 0 15px;
+}
+
+.redes a img .rd:hover {
+    transform: scale(1.2);
+}
+
+/* MEDIA QUERIES ADAPTACION DESKTOP */
+@media (min-width: 768px){
+    .header {
+        display: flex;
+        top: 0px;
+        align-items: center;
+        gap: 145px;
+    }
+
+    .menu {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .logo{
+        @include ajuste(20%, 20%);
+    }
+
+    .compras {
+        display: inline-flex;
+        justify-content: space-between;
+      }
+
+    #grilla{
+        display: grid;
+        grid-template-areas:
+        "accesoCuotas accesoAccesorios"
+        "accesoCuotas accesoProducto";
+        grid-template-columns: 50% 50%;
+    }
+
+    .grande {
+        width: 95%;
+        height: 97%;
+        margin: 5%;
+        border-radius: 3%;
+        opacity: 1;
+        object-fit: cover;
+    }
+
+    .chico {
+        width: 90%;
+        height: 94%;
+        margin: 5%;
+        border-radius: 3%;
+        opacity: 1;
+        object-fit: cover;
+    }
+
+    .adicionales {
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       flex-wrap: wrap;
+    }
+    
+    #grilla-contacto{
+        display: grid;
+        grid-template-areas:
+        "datos mapa"
+        "datos mapa";
+        grid-template-columns: 50% 50%;
+    } 
+
+}
+
+/* FORMULARIO DE CONTACTO */
+#grilla-contacto{
+    display: grid;
+    grid-template-areas:
+    "datos"
+    "mapa";
+    grid-template-rows: 70% 50%; 
+}
+
+/* SUSCRIPCION DE NOVEDADES VIA MAIL */
+.Novedades {
+    color: $color-letra-principal;
+    font-family: $fuente-principal;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.Novedades form {
+    text-align: center;
+}
+
+.Novedades h1{
+    display: flex;
+    justify-content: center;
+}
+
+.contacto{
+    margin-left: 15%;
+    color: $color-letra-principal;
+    font-family: $fuente-principal;
+    margin-top: 8%;
+}
+
+.suscripcion{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    padding-left:34%;
+    border-radius:10px;
+    margin-top: 3%;
+}
+
+/* MAPA DEL LUGAR */
+iframe{
+    @include ajuste(80%, 75%);
+    margin: 12%;
+}
+
+form.datos{
+    border-radius:10px;
+    margin: 16%;
+    font-family: $fuente-principal;
+}
+
+form label{
+    width:25%;
+    font-weight:bold;
+    display:inline-block;
+    margin: 3%;
+}
+
+input[type=text], input[type=tel], input[type=email]{
+   font-size: 25px;
+   font-family: "Montserrat";
+   border-radius: 5%;
+}
+
+/* ARTICULOS DE COMPRA A LA VENTA */
+.compras {
+    text-align: center;
+    font-family: $fuente-principal;
+}
+
+.compras h1{
+    text-align: center;
+    font-family: $fuente-principal;
+}
+
+.compras img{
+    width: 60%;
+    height: 69%;
+    margin: 25px;
+}
+
+input[type="submit" i]{
+    border: 25px;
+    margin-top: 10%;
+    padding: 10px 25px;
+    color: white;
+    background-color: $color-letra-principal;
+    font-family: $fuente-principal;
+    border-radius: 5%;
+    transition: .3s;
+}
+
+input[type="submit" i]:hover {
+    background-color: white;
+    color: #49403a;
+}
+
+/* INFORMECION COMO COMPRAR */
+.textoComoComprar {
+    padding-top: 5%;
+    font-family: $fuente-principal;
+    text-align: center;
+}
