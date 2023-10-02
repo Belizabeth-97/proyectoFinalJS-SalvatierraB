@@ -58,7 +58,8 @@ class ControladorProducto{
 }
 
 class Carrito {
-    constructor(){
+
+  constructor(){
     this.listaCarrito = [];
     this.recuperarStorage();
   }
@@ -66,7 +67,6 @@ class Carrito {
   agregar(producto){
     this.listaCarrito.push(producto);
     this.guardarCarritoEnLocalStorage();
-    
   }
 
   eliminar(productoEliminado){
@@ -89,7 +89,6 @@ class Carrito {
   mostrar(){
     let contenedor_carrito = document.getElementById("contenedor_carrito");
     contenedor_carrito.innerHTML = ""
-
     this.listaCarrito.forEach((producto) => {
       contenedor_carrito.innerHTML += `
         <div class="card mb-3" style="max-width: 540px;">
@@ -115,29 +114,27 @@ class Carrito {
 
     this.listaCarrito.forEach((producto) => {
       let  btn_eliminar = document.getElementById(`ep-${producto.id}`)
-    
-      btn_eliminar.addEventListener("click", () => {
-        
+      btn_eliminar.addEventListener("click", () => {    
         this.eliminar(producto)
         this.guardarCarritoEnLocalStorage()
         this.mostrar()
       })
     });
-   }
 
-   limpiar (){
+    //mostrar el total de los productos para finalizar la compra
+    this.mostrarTotal()
+  }
+
+  limpiar (){
     this.listaCarrito = []
-   }
+  }
 
-   botonFinalizar (){
+  botonFinalizar (){
     const finalizarCompra = document.getElementById(`finalizarCompra`);
-
     finalizarCompra.addEventListener ("click", ()=> {
-
       localStorage.removeItem("listaCarrito")
       this.limpiar()
       this.mostrar()
-
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -145,7 +142,17 @@ class Carrito {
         timer: 2000
       })
     })
-   }
+  }
+
+  calcularTotal(){
+    return this.listaCarrito.reduce((acumulador,producto)=> acumulador + producto.precio * producto.cantidad ,0)
+  }
+  
+  mostrarTotal(){
+    const precioTotal = document.getElementById(`precioTotal`)
+    precioTotal.innerText = `Precio Total: $${this.calcularTotal()}`
+  }
+
 }
 
 const CP = new ControladorProducto ();

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.min.css">
 </head>
 <body>
-    <header> 
+  <header> 
         <section class="banner">
             <div class="publicidad">ENVIOS A TODO EL PAIS - 6 CUOTAS SIN INTERÉS - 15% OFF CON TRANSFERENCIA</div>
             <nav class="navbar navbar-expand-lg menu">
@@ -54,9 +54,7 @@
               </nav> 
             </section>
     </header>   
-            <div id="contenedor_indumentaria" class="compras">
-                
-            </div>
+      <div id="contenedor_indumentaria" class="compras"></div>
         <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -66,23 +64,23 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="contenedor_carrito">
-              <!--CARD HORIZONTAL PARA VISUALIZARSE EN CARRITO-->
-              <div class="card mb-3" style="max-width: 540px;">
-                  <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="../img/" class="img-fluid rounded-start" alt="...">
-                      </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Nombre Producto</h5>
-                          <p class="card-text">Cantidad: </p>
-                          <p class="card-text">Precio: </p>
+                <!--CARD HORIZONTAL PARA VISUALIZARSE EN CARRITO-->
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                          <img src="../img/" class="img-fluid rounded-start" alt="...">
                         </div>
+                      <div class="col-md-8">
+                          <div class="card-body">
+                            <h5 class="card-title">Nombre Producto</h5>
+                            <p class="card-text">Cantidad: </p>
+                            <p class="card-text">Precio: </p>
+                          </div>
+                      </div>
                     </div>
-                  </div>
-              </div>
-
+                </div>
             </div>
+          <div id="precioTotal"></div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir comprando</button>
               <button type="button" id= "finalizarCompra" class="btn btn-primary">Finalizar</button>
