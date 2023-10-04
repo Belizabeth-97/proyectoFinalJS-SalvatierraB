@@ -1,37 +1,39 @@
 class Producto {
-  constructor ( id, nombre, precio, img){
+  constructor (id, nombre, precio, cantidad, img){
     this.id = id
     this.nombre = nombre
     this.precio = precio
-    this.cantidad = 1
+    this.cantidad = cantidad
     this.img = img
   }
+
 }
 
-class ControladorProducto{
-  constructor (){
-    this.listaProductosI  = []
+class ControladorProducto {
+
+  constructor() {
+    this.listaProductos  = []
   }
 
-  agregar (producto){
-    this.listaProductosI.push(producto)
+  agregar(producto) {
+    this.listaProductos.push(producto)
   }
 
-  cargarProductos(){
-    const p1 = new Producto(1, "Conjunto Roma", 25300, "../img/sastrero.png")
-    const p2 = new Producto(2, "Sastrero Mia", 11400, "../img/palazoArena.png")
-    const p3 = new Producto(3, "Sweater Victoria", 7600, "../img/sweater.png")
+  cargarProductos() {
+    const primerProducto = new Producto(1, "Conjunto Roma", 25300, 1, "../img/sastrero.png")
+    const segundoProducto = new Producto(2, "Sastrero Mia", 11400, 1, "../img/palazoArena.png")
+    const tercerProducto = new Producto(3, "Sweater Victoria", 7600, 1, "../img/sweater.png")
 
-    CP.agregar(p1)
-    CP.agregar(p2)
-    CP.agregar(p3)
+    controladorProducto.agregar(primerProducto)
+    controladorProducto.agregar(segundoProducto)
+    controladorProducto.agregar(tercerProducto)
   }
 
   mostrar() {
-    let contenedor_indumentaria = document.getElementById("contenedor_indumentaria");
+    let contenedorIndumentaria = document.getElementById("contenedor_indumentaria");
 
-    this.listaProductosI.forEach((producto) => {
-      contenedor_indumentaria.innerHTML += `
+    this.listaProductos.forEach((producto) => {
+      contenedorIndumentaria.innerHTML += `
         <div class="card" style="width: 20rem; background-color: rgba(239, 228, 224, 0.8784313725);">
           <img src="${producto.img}" class="card-img-top mx-auto" alt="...">
           <div class="card-body">
@@ -45,12 +47,11 @@ class ControladorProducto{
         </div>`;
     });
 
-    this.listaProductosI.forEach((producto) => {
-      const AniadirProducto = document.getElementById(`ap-${producto.id}`);
-
-      AniadirProducto.addEventListener("click", () => {
+    this.listaProductos.forEach((producto) => {
+      const agregarProductoAlCarrito = document.getElementById(`ap-${producto.id}`);
+      agregarProductoAlCarrito.addEventListener("click", () => {
         carrito.agregar(producto);
-        carrito.guardarCarritoEnLocalStorage()
+        carrito.actualizarLocalStorage()
         carrito.mostrar();
       });
     });
@@ -59,38 +60,38 @@ class ControladorProducto{
 
 class Carrito {
 
-  constructor(){
+  constructor() {
     this.listaCarrito = [];
-    this.recuperarStorage();
+    this.recuperarLocalStorage();
   }
 
-  agregar(producto){
+  agregar(producto) {
     this.listaCarrito.push(producto);
-    this.guardarCarritoEnLocalStorage();
+    this.actualizarLocalStorage();
   }
 
-  eliminar(productoEliminado){
+  eliminar(productoEliminado) {
     let indice = this.listaCarrito.findIndex(producto => producto.id == productoEliminado.id) 
     this.listaCarrito.splice(indice, 1)
   }
 
-  guardarCarritoEnLocalStorage(){
+  actualizarLocalStorage() {
     let carritoJSON = JSON.stringify(this.listaCarrito);
     localStorage.setItem("listaCarrito", carritoJSON)
   }
 
-  recuperarStorage(){
+  recuperarLocalStorage() {
     let carritoJSON = localStorage.getItem("listaCarrito")
     if (carritoJSON) {
       this.listaCarrito = JSON.parse(carritoJSON);
     }
   }
 
-  mostrar(){
-    let contenedor_carrito = document.getElementById("contenedor_carrito");
-    contenedor_carrito.innerHTML = ""
+  mostrar() {
+    let contenedorCarrito = document.getElementById("contenedor_carrito");
+    contenedorCarrito.innerHTML = ""
     this.listaCarrito.forEach((producto) => {
-      contenedor_carrito.innerHTML += `
+      contenedorCarrito.innerHTML += `
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
@@ -113,25 +114,24 @@ class Carrito {
     });
 
     this.listaCarrito.forEach((producto) => {
-      let  btn_eliminar = document.getElementById(`ep-${producto.id}`)
-      btn_eliminar.addEventListener("click", () => {    
+      const botonEliminar = document.getElementById(`ep-${producto.id}`)
+      botonEliminar.addEventListener("click", () => {    
         this.eliminar(producto)
-        this.guardarCarritoEnLocalStorage()
+        this.actualizarLocalStorage()
         this.mostrar()
       })
     });
 
-    //mostrar el total de los productos para finalizar la compra
-    this.mostrarTotal()
+    this.mostrarPrecioTotalCompra()
   }
 
-  limpiar (){
+  limpiar() {
     this.listaCarrito = []
   }
 
-  botonFinalizar (){
+  finalizarSeleccionProductos() {
     const finalizarCompra = document.getElementById(`finalizarCompra`);
-    finalizarCompra.addEventListener ("click", ()=> {
+    finalizarCompra.addEventListener ("click", () => {
       localStorage.removeItem("listaCarrito")
       this.limpiar()
       this.mostrar()
@@ -144,25 +144,24 @@ class Carrito {
     })
   }
 
-  calcularTotal(){
+  calcularPrecioTotal() {
     return this.listaCarrito.reduce((acumulador,producto)=> acumulador + producto.precio * producto.cantidad ,0)
   }
   
-  mostrarTotal(){
+  mostrarPrecioTotalCompra() {
     const precioTotal = document.getElementById(`precioTotal`)
-    precioTotal.innerText = `Precio Total: $${this.calcularTotal()}`
+    precioTotal.innerText = `Precio Total: $${this.calcularPrecioTotal()}`
   }
 
 }
 
-const CP = new ControladorProducto ();
+const controladorProducto = new ControladorProducto();
 const carrito = new Carrito();
 
 
-carrito.recuperarStorage();
+carrito.recuperarLocalStorage();
 carrito.mostrar();
-carrito.botonFinalizar();
+carrito.finalizarSeleccionProductos();
 
-CP.cargarProductos();
-CP.mostrar ();
-
+controladorProducto.cargarProductos();
+controladorProducto.mostrar();
