@@ -1,23 +1,23 @@
 [
     {
-       "id":1,
-       "nombre":"Conjunto Roma",
-       "precio":25300,
-       "cantidad":1,
-       "img":"../img/sastrero.png"
+       "id": 1,
+       "nombre": "Conjunto Roma",
+       "precio": 25300,
+       "cantidad": 1,
+       "img": "../img/sastrero.png"
     },
     {
-       "id":2,
-       "nombre":"Sastrero Mia",
-       "precio":11400,
+       "id": 2,
+       "nombre": "Sastrero Mia",
+       "precio": 11400,
        "cantidad":1,
-       "img":"../img/palazoArena.png"
+       "img": "../img/palazoArena.png"
     },
     {
-       "id":3,
-       "nombre":"Sweater Victoria",
-       "precio":7600,
-       "cantidad":1,
-       "img":"../img/sweater.png"
+       "id": 3,
+       "nombre": "Sweater Victoria",
+       "precio": 7600,
+       "cantidad": 1,
+       "img": "../img/sweater.png"
     }
  ]

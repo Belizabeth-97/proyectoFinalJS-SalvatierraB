@@ -19,14 +19,17 @@ class ControladorProducto {
     this.listaProductos.push(producto)
   }
 
-  cargarProductos() {
-    const primerProducto = new Producto(1, "Conjunto Roma", 25300, 1, "../img/sastrero.png")
-    const segundoProducto = new Producto(2, "Sastrero Mia", 11400, 1, "../img/palazoArena.png")
-    const tercerProducto = new Producto(3, "Sweater Victoria", 7600, 1, "../img/sweater.png")
+  async alistarProductos () {
 
-    controladorProducto.agregar(primerProducto)
-    controladorProducto.agregar(segundoProducto)
-    controladorProducto.agregar(tercerProducto)
+    let listaProductosJSON = await fetch("/miAPI.json")
+    let listaProductosJS = await listaProductosJSON.json()
+
+    listaProductosJS.forEach(producto => {
+      let nuevoProducto = new Producto (producto.id, producto.nombre, producto.precio, producto.cantidad, producto.img)
+      this.agregar(nuevoProducto)
+    })
+    
+    this.mostrar()
   }
 
   mostrar() {
@@ -163,5 +166,5 @@ carrito.recuperarLocalStorage();
 carrito.mostrar();
 carrito.finalizarSeleccionProductos();
 
-controladorProducto.cargarProductos();
+controladorProducto.alistarProductos();
 controladorProducto.mostrar();
